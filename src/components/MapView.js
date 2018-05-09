@@ -18,6 +18,9 @@ const BOUNDS_PADDING_SIDE = IS_ANDROID ? PixelRatio.getPixelSizeForLayoutSize(60
 const BOUNDS_PADDING_BOTTOM = IS_ANDROID ? PixelRatio.getPixelSizeForLayoutSize(206) : 206;
 
 class MapView extends React.Component {
+  componentDidMount(){
+    return console.log(this.props);
+  }
   static propTypes = {
     ...MapboxGL.MapView.propTypes,
 
@@ -25,6 +28,7 @@ class MapView extends React.Component {
      * Mapbox access token
      */
     accessToken: PropTypes.string.isRequired,
+
 
     /**
      * Theme applied to map, see Theme.js for more information
