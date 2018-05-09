@@ -151,7 +151,7 @@ class Cards extends React.Component {
     let distance = findDistance(
       MapboxGL.geoUtils.makePoint(this.props.origin),
       feature,
-      { units: 'miles' },
+      { units: 'kilometers' },
     );
     distance = Math.round(distance * 10) / 10;
 
@@ -173,16 +173,16 @@ class Cards extends React.Component {
                 <Text
                   ellipsizeMode='tail'
                   numberOfLines={1}
-                  style={[styles.subheader, { flex: 0.9 }]}>{props.addressFormatted}</Text>
-                <Text style={[styles.subheader, { paddingRight: 4 }]}>mi</Text>
+                  style={[styles.subheader, { flex: 0.9 }]}>{props.popupContent}</Text>
+                <Text style={[styles.subheader, { paddingRight: 4 }]}>kms</Text>
               </View>
             </View>
           </View>
 
           <View style={styles.slideBottomRow}>
             <View>
-              <Text style={[styles.subheader, { color: this.props.theme.cardTextColor, textAlign: 'right' }]}>Phone</Text>
-              <Text style={[styles.subheader, { color: this.props.theme.cardTextColor }]}>{props.phoneFormatted}</Text>
+              <Text style={[styles.subheader, { color: this.props.theme.cardTextColor, textAlign: 'center' }]}></Text>
+              <Text style={[styles.subheader, { color: this.props.theme.cardTextColor }]}>{props.amenity}</Text>
             </View>
           </View>
         </View>
