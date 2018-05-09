@@ -181,11 +181,6 @@ class Cards extends React.Component {
 
           <View style={styles.slideBottomRow}>
             <View>
-              <Text style={[styles.subheader, { color: this.props.theme.cardTextColor }]}>Hours</Text>
-              <Text style={[styles.subheader, { color: this.props.theme.cardTextColor }]}>{props.hoursFormatted}</Text>
-            </View>
-
-            <View>
               <Text style={[styles.subheader, { color: this.props.theme.cardTextColor, textAlign: 'right' }]}>Phone</Text>
               <Text style={[styles.subheader, { color: this.props.theme.cardTextColor }]}>{props.phoneFormatted}</Text>
             </View>
