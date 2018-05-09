@@ -208,7 +208,7 @@ class MapView extends React.Component {
       <View style={this.props.style} onLayout={this.onLayout}>
         <MapboxGL.MapView
           ref={c => this.map = c}
-          zoomLevel={this.props.zoomLevel}
+          zoomLevel={13}
           styleURL={this.props.theme.styleURL}
           centerCoordinate={this.state.centerCoordinate}
           onPress={this.onPress}
