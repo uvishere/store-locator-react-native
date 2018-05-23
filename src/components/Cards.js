@@ -174,7 +174,7 @@ class Cards extends React.Component {
                   ellipsizeMode='tail'
                   numberOfLines={1}
                   style={[styles.subheader, { flex: 0.9 }]}>{props.popupContent}</Text>
-                <Text style={[styles.subheader, { paddingRight: 4 }]}>kms</Text>
+                <Text style={[styles.subheader, { paddingRight: 4 }]}>meters</Text>
               </View>
             </View>
           </View>
