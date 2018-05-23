@@ -139,6 +139,7 @@ class MapView extends React.Component {
   }
 
   onLocationChange (coord) {
+    console.log(coord)
     this.setState({ origin: coord });
   }
 
@@ -210,7 +211,7 @@ class MapView extends React.Component {
           ref={c => this.map = c}
           zoomLevel={13}
           minZoomLevel={13}
-          maxZoomLevel={16}
+          maxZoomLevel={20}
           scrollEnabled={true}
           styleURL={this.props.theme.styleURL}
           centerCoordinate={this.state.centerCoordinate}
