@@ -114,6 +114,7 @@ class Directions extends React.Component {
     const requestOptions = {
       profile: 'walking',
       geometry: 'polyline',
+      alternatives: true,
     };
 
     let res = null;
