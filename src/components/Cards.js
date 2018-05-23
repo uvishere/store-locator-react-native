@@ -211,8 +211,8 @@ class Cards extends React.Component {
           { units: 'kilometers' },
         );
 
-      console.log('distanceA: ', distanceA, 'distanceB: ', distanceB);
-      return distanceA > distanceB;
+      console.log('distanceA: ', distanceA * 1000000 , 'distanceB: ', distanceB);
+      return (distanceA * 1000000)  > (distanceB * 1000000 );
     });
 
     return (
