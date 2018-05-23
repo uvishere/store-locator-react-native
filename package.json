@@ -22,6 +22,7 @@
     "@turf/distance": "^5.0.4",
     "mapbox": "^1.0.0-beta9",
     "react-native-snap-carousel": "^3.4.0",
+    "react-native-tts": "^1.5.0",
     "url": "^0.11.0"
   },
   "devDependencies": {

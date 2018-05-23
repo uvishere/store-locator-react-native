@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import MapboxGL from '@mapbox/react-native-mapbox-gl';
 import MapboxClient from 'mapbox';
+import Tts from 'react-native-tts';
 
 import Places from './Places';
 
@@ -87,6 +88,10 @@ class Directions extends React.Component {
     }
   }
 
+  componentWillUnmount(){
+   Tts.stop();
+  }
+
   areCoordinatesEqual (c1, c2) {
     if (!c1 || !c2) {
       return false;
@@ -115,6 +120,8 @@ class Directions extends React.Component {
       profile: 'walking',
       geometry: 'polyline',
       alternatives: true,
+      steps: true,
+      bearing: [45,90]
     };
 
     let res = null;
@@ -132,6 +139,7 @@ class Directions extends React.Component {
     }
 
     const directions = res.entity.routes[0];
+    console.log(directions)
     if (!directions) {
       return;
     }
@@ -142,11 +150,23 @@ class Directions extends React.Component {
 
     this.setState({ directions: directions });
   }
+  getIntructions(directions) {
+    let instructions="";
 
+    directions.legs.forEach(({steps}) => {
+      steps.forEach(({maneuver}) => {
+        if (maneuver.instruction)
+          instructions+=(maneuver.instruction+". ")
+      })
+    })
+    Tts.speak(instructions);  
+  }
   render () {
     if (!this.state.directions) {
       return null;
     }
+
+    this.getIntructions(this.state.directions);
     return (
       <MapboxGL.ShapeSource id='mapbox-directions-source' shape={this.state.directions.geometry}>
         <MapboxGL.LineLayer
