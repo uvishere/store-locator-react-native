@@ -115,6 +115,7 @@ class Directions extends React.Component {
       profile: 'walking',
       geometry: 'polyline',
       alternatives: true,
+      steps: true
     };
 
     let res = null;
@@ -130,7 +131,7 @@ class Directions extends React.Component {
     if (res == null) {
       return;
     }
-
+    console.log(res.entity);
     const directions = res.entity.routes[0];
     if (!directions) {
       return;
