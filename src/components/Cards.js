@@ -198,11 +198,27 @@ class Cards extends React.Component {
     if (!this.state.sliderWidth || !this.state.itemWidth || !this.props.data) {
       return null;
     }
+
+    const sortedData = this.props.data.sort((a, b) => {
+      const distanceA = findDistance(
+        MapboxGL.geoUtils.makePoint(this.props.origin),
+        a,
+        { units: 'kilometers' },
+        ),
+        distanceB = findDistance(
+          MapboxGL.geoUtils.makePoint(this.props.origin),
+          b,
+          { units: 'kilometers' },
+        );
+
+      return distanceA > distanceB;
+    });
+
     return (
       <SnapCarousel
         lockScrollWhileSnapping
         ref={(c) => this.carousel = c}
-        data={this.props.data}
+        data={sortedData}
         firstItem={this.props.activeIndex}
         onSnapToItem={this.onSnapToItem}
         renderItem={this.renderItem}
