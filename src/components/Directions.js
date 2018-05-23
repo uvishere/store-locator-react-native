@@ -2,8 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import MapboxGL from '@mapbox/react-native-mapbox-gl';
 import MapboxClient from 'mapbox';
-import Tts from 'react-native-tts';
-
+import TextToSpeech from 'text-to-speech-js';
 import Places from './Places';
 
 const styles = MapboxGL.StyleSheet.create({
@@ -88,10 +87,6 @@ class Directions extends React.Component {
     }
   }
 
-  componentWillUnmount(){
-   Tts.stop();
-  }
-
   areCoordinatesEqual (c1, c2) {
     if (!c1 || !c2) {
       return false;
@@ -159,7 +154,7 @@ class Directions extends React.Component {
           instructions+=(maneuver.instruction+". ")
       })
     })
-    Tts.speak(instructions);  
+    TextToSpeech.talk(instructions);  
   }
   render () {
     if (!this.state.directions) {
