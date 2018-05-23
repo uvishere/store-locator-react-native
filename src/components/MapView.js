@@ -77,7 +77,7 @@ class MapView extends React.Component {
     this.state = {
       activeIndex: 0,
       activeID: activeID,
-      origin: null,
+      origin: props.centerCoordinate,
       region: null,
       layout: null,
       destination: destination,
