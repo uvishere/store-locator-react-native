@@ -117,9 +117,12 @@ class Cards extends React.Component {
   constructor (props) {
     super(props);
 
+    console.log("rendering the card...");
+
     this.state = {
       sliderWidth: null,
       itemWidth: null,
+      origin: this.props.origin
     };
 
     this.renderDefaultItem = this.renderDefaultItem.bind(this);
@@ -137,6 +140,23 @@ class Cards extends React.Component {
       this.props.onActiveIndexChange(updatedActiveIndex);
     }
   }
+  componentWillReceiveProps(nextProps){
+    if (this.areCoordinatesEqual(this.state.origin, nextProps.origin)) {
+      return;
+    }
+    this.setState({
+      origin:nextProps.origin
+    })
+  }
+  
+  areCoordinatesEqual (c1, c2) {
+    if (!c1 || !c2) {
+      return false;
+    }
+    const dLng = Math.abs(c1[0] - c2[0]);
+    const dLat = Math.abs(c1[1] - c2[1]);
+    return dLng <= 6e-6 && dLat <= 6e-6;
+  }
 
   renderDefaultItem ({ item }) {
     const feature = item;
@@ -149,7 +169,7 @@ class Cards extends React.Component {
     };
 
     let distance = findDistance(
-      MapboxGL.geoUtils.makePoint(this.props.origin),
+      MapboxGL.geoUtils.makePoint(this.state.origin),
       feature,
       { units: 'kilometers' },
     );
@@ -201,12 +221,12 @@ class Cards extends React.Component {
 
     const sortedData = this.props.data.sort((a, b) => {
       const distanceA = findDistance(
-        MapboxGL.geoUtils.makePoint(this.props.origin),
+        MapboxGL.geoUtils.makePoint(this.state.origin),
         a,
         { units: 'kilometers' },
         ),
         distanceB = findDistance(
-          MapboxGL.geoUtils.makePoint(this.props.origin),
+          MapboxGL.geoUtils.makePoint(this.state.origin),
           b,
           { units: 'kilometers' },
         );
