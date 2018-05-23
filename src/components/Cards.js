@@ -153,7 +153,7 @@ class Cards extends React.Component {
       feature,
       { units: 'kilometers' },
     );
-    distance = Math.round(distance * 10) / 10;
+    distance = Math.round(distance * 10 * 1000) / 10;
 
     return (
       <View key={feature.id} style={style}>
