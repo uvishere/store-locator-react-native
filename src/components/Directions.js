@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import MapboxGL from '@mapbox/react-native-mapbox-gl';
 import MapboxClient from 'mapbox';
-import TextToSpeech from 'text-to-speech-js';
 import Places from './Places';
 
 const styles = MapboxGL.StyleSheet.create({
@@ -154,7 +153,7 @@ class Directions extends React.Component {
           instructions+=(maneuver.instruction+". ")
       })
     })
-    TextToSpeech.talk(instructions);  
+    console.log(instructions);  
   }
   render () {
     if (!this.state.directions) {

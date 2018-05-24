@@ -211,7 +211,7 @@ class MapView extends React.Component {
           ref={c => this.map = c}
           zoomLevel={13}
           minZoomLevel={13}
-          maxZoomLevel={20}
+          maxZoomLevel={16}
           scrollEnabled={true}
           styleURL={this.props.theme.styleURL}
           centerCoordinate={this.state.centerCoordinate}
