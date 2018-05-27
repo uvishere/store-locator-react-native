@@ -145,7 +145,7 @@ class MapView extends React.Component {
 
   onDirectionsFetched (directions) {
     if (!this.state.isChangeFromPress) {
-      this.fitBounds(directions);
+      this.fitBounds(directions,(err)=>{ToastAndroid.show("error in fitbounds")});
     }
   }
 
@@ -211,7 +211,7 @@ class MapView extends React.Component {
           ref={c => this.map = c}
           zoomLevel={13}
           minZoomLevel={13}
-          maxZoomLevel={16}
+          maxZoomLevel={18}
           scrollEnabled={true}
           styleURL={this.props.theme.styleURL}
           centerCoordinate={this.state.centerCoordinate}
