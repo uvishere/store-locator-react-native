@@ -140,7 +140,7 @@ class MapView extends React.Component {
 
   onLocationChange (coord) {
     console.log(coord)
-    this.setState({ origin: coord });
+    this.setState({ origin: coord, });
   }
 
   onDirectionsFetched (directions) {
@@ -211,13 +211,14 @@ class MapView extends React.Component {
           ref={c => this.map = c}
           zoomLevel={13}
           minZoomLevel={12}
-          maxZoomLevel={18}
+          maxZoomLevel={16}
+          zoomEnabled={true}
           scrollEnabled={true}
           styleURL={this.props.theme.styleURL}
-          centerCoordinate={this.state.centerCoordinate}
+          centerCoordinate={this.state.origin}
           onPress={this.onPress}
           onRegionWillChange={this.onRegionWillChange}
-          style={{ flex: 1 }}>
+          style={{ flex: 1 }} >
 
           {this.props.children}
 
