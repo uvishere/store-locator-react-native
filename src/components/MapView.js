@@ -209,11 +209,10 @@ class MapView extends React.Component {
       <View style={this.props.style} onLayout={this.onLayout}>
         <MapboxGL.MapView
           ref={c => this.map = c}
-          zoomLevel={13}
-          minZoomLevel={12}
-          maxZoomLevel={16}
+          zoomLevel={11}
+          minZoomLevel={10}
+          maxZoomLevel={15}
           zoomEnabled={true}
-          scrollEnabled={true}
           styleURL={this.props.theme.styleURL}
           centerCoordinate={this.state.origin}
           onPress={this.onPress}
